@@ -7,6 +7,7 @@ const skills = [
   { name: "Node.js", color: "#3c873a" },
   { name: "React.js", color: "#61dafb" },
   { name: "Express.js", color: "#000000" },
+  { name: "JavaScript", color: "#f7df1e" },
   { name: "TypeScript", color: "#3178c6" },
   { name: "MongoDB", color: "#4db33d" },
   { name: "Mongoose", color: "#4db33d" },
