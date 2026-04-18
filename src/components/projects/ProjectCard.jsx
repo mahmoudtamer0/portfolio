@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
-import "./projectCard.css"
-import { useState, useRef } from "react";
+import "./projectCard.css";
+import { useState, useRef, useEffect } from "react";
 
 export default function ProjectCard({ project }) {
     const [hovered, setHovered] = useState(false);
+
     const videoRef = useRef(null);
+    const cardRef = useRef(null);
+
+    const isMobile = window.innerWidth <= 768;
 
     const handleMouseEnter = async () => {
+        if (isMobile) return;
+
         setHovered(true);
 
         if (videoRef.current) {
@@ -20,6 +26,8 @@ export default function ProjectCard({ project }) {
     };
 
     const handleMouseLeave = () => {
+        if (isMobile) return;
+
         setHovered(false);
 
         if (videoRef.current) {
@@ -29,24 +37,49 @@ export default function ProjectCard({ project }) {
         }
     };
 
+    useEffect(() => {
+        if (!isMobile) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!videoRef.current) return;
+
+                if (entry.isIntersecting) {
+                    videoRef.current.play().catch(() => { });
+                } else {
+                    videoRef.current.pause();
+                    videoRef.current.currentTime = 0;
+                }
+            },
+            { threshold: 0.6 }
+        );
+
+        if (cardRef.current) {
+            observer.observe(cardRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [isMobile]);
 
     return (
-        <Link to={`/projects/${project._id}`}
+        <Link
+            to={`/projects/${project._id}`}
             className="project-card"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <div className="card-img-wrap">
-                {project.video && !hovered && (
-                    <div className={`hover-hint ${hovered ? "hide-hint" : "show-hint"}`}>
-                        Hold to preview
+            <div ref={cardRef} className="card-img-wrap">
+                {project.video && !hovered && !isMobile && (
+                    <div className="hover-hint">
+                        Hover to preview
                     </div>
                 )}
+
                 {project.image && (
                     <img
                         src={project.image}
                         alt={project.title}
-                        className={`card-media card-img ${hovered && project.video ? "hide" : "show"
+                        className={`card-media card-img ${(hovered || isMobile) && project.video ? "hide" : "show"
                             }`}
                     />
                 )}
@@ -55,7 +88,7 @@ export default function ProjectCard({ project }) {
                     <video
                         ref={videoRef}
                         src={project.video}
-                        className={`card-media card-video ${hovered ? "show" : "hide"
+                        className={`card-media card-video ${hovered || isMobile ? "show" : "hide"
                             }`}
                         muted
                         loop
@@ -93,9 +126,7 @@ export default function ProjectCard({ project }) {
                             target="_blank"
                             rel="noreferrer"
                             className="btn-card btn-live"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                            }}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             Live
                         </a>
@@ -109,15 +140,15 @@ export default function ProjectCard({ project }) {
                             target="_blank"
                             rel="noreferrer"
                             className="btn-card"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                            }}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             GitHub
                         </a>
                     )}
 
-                    <Link to={`/projects/${project._id}`} className="btn-card">Details</Link>
+                    <Link to={`/projects/${project._id}`} className="btn-card">
+                        Details
+                    </Link>
                 </div>
             </div>
         </Link>
