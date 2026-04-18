@@ -1,7 +1,5 @@
 import { useEffect, useRef } from "react";
-// ✅ ضع صورتك في نفس الفولدر وغير الاسم هنا
 import profileImg from "../../assets/588610953_4115306032066648_6373363123451178713_n (1).jpg";
-// لو عندك CV فايل ضعه هنا وغير الاسم
 import cvFile from "../../assets/MahmoudTamer_Fullstack.pdf";
 
 import "./landing.css"
@@ -23,14 +21,12 @@ export default function HeroSection() {
     return (
         <>
 
-            {/* ===== HERO ===== */}
             <section className="hero-section">
                 <div className="hero-blob" />
 
                 <div className="container">
                     <div className="row align-items-center">
 
-                        {/* Left: Text */}
                         <div className="col-lg-6 hero-content">
                             <span className="job-label fade-up">Fullstack Developer</span>
 
@@ -93,7 +89,6 @@ export default function HeroSection() {
                                 </a>
                             </div>
 
-                            {/* Download CV Button */}
                             <div className="fade-up">
                                 <a href={cvFile} download="Mahmoud_Tamer_CV.pdf" className="btn-download">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
@@ -104,7 +99,6 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        {/* Right: Photo */}
                         <div className="col-lg-6 hero-image-wrap">
                             <div className="profile-blob-wrap hero-img-fadein">
                                 <div className="profile-blob-bg" />

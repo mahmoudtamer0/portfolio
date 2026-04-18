@@ -3,94 +3,27 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../projects/ListProjects"
 import ListProjects from "../projects/ListProjects";
 
-// ===================== DATA =====================
 const skills = [
-    { name: "Node.js", color: "#3c873a" },
-    { name: "React.js", color: "#61dafb" },
-    { name: "Express.js", color: "#000000" },
-    { name: "MongoDB", color: "#4db33d" },
-    { name: "PostgreSQL", color: "#336791" },
-    { name: "REST APIs", color: "#F5C518" },
-    { name: "JWT Auth", color: "#d63384" },
-    { name: "Docker", color: "#2496ed" },
-    { name: "Git", color: "#f34f29" },
-    { name: "TypeScript", color: "#3178c6" },
-    { name: "Tailwind", color: "#38bdf8" },
-    { name: "Socket.io", color: "#010101" },
+  { name: "Node.js", color: "#3c873a" },
+  { name: "React.js", color: "#61dafb" },
+  { name: "Express.js", color: "#000000" },
+  { name: "TypeScript", color: "#3178c6" },
+  { name: "MongoDB", color: "#4db33d" },
+  { name: "Mongoose", color: "#4db33d" },
+  { name: "SQL", color: "#336791" },
+  { name: "ReduxToolkit", color: "#336791" },
+  { name: "REST APIs", color: "#F5C518" },
+  { name: "JWT Auth", color: "#d63384" },
+  { name: "Docker", color: "#2496ed" },
+  { name: "Git, GitHub", color: "#f34f29" },
+  { name: "Bootstrap", color: "#563d7c" },
+  { name: "Tailwind", color: "#38bdf8" },
+  { name: "Socket.io", color: "#010101" },
+  { name: "HTML/CSS", color: "#333333" },
 ];
-
-// const projects = [
-//     {
-//         id: 1,
-//         title: "E-Commerce Platform",
-//         category: "Fullstack",
-//         description:
-//             "Full-featured e-commerce app with product management, cart system, secure checkout, and admin dashboard. Built for performance and scalability.",
-//         tech: ["Node.js", "React.js", "MongoDB", "Stripe"],
-//         github: "#",
-//         live: "#",
-//         image: null,
-//     },
-//     {
-//         id: 2,
-//         title: "Chat Application",
-//         category: "Fullstack",
-//         description:
-//             "Real-time chat app supporting private & group rooms, file sharing, and online presence tracking using WebSockets.",
-//         tech: ["Node.js", "Socket.io", "React.js", "MongoDB"],
-//         github: "#",
-//         live: null,
-//         image: null,
-//     },
-//     {
-//         id: 3,
-//         title: "REST API Service",
-//         category: "Backend",
-//         description:
-//             "Scalable RESTful API with full JWT authentication, role-based access control, rate limiting, and Swagger documentation.",
-//         tech: ["Node.js", "Express.js", "PostgreSQL", "Docker"],
-//         github: "#",
-//         live: null,
-//         image: null,
-//     },
-//     {
-//         id: 4,
-//         title: "Portfolio Dashboard",
-//         category: "Frontend",
-//         description:
-//             "Interactive analytics dashboard with charts, dark mode, and responsive layout. Consumes real data from a custom backend.",
-//         tech: ["React.js", "TypeScript", "Tailwind", "REST APIs"],
-//         github: "#",
-//         live: "#",
-//         image: null,
-//     },
-//     {
-//         id: 5,
-//         title: "Auth Microservice",
-//         category: "Backend",
-//         description:
-//             "Standalone authentication microservice with OAuth2, refresh tokens, and email verification. Plug-and-play for any Node.js app.",
-//         tech: ["Node.js", "JWT Auth", "PostgreSQL", "Docker"],
-//         github: "#",
-//         live: null,
-//         image: null,
-//     },
-//     {
-//         id: 6,
-//         title: "UI Component Library",
-//         category: "Frontend",
-//         description:
-//             "Reusable, accessible React component library with Storybook docs. Covers forms, modals, toasts, and layout primitives.",
-//         tech: ["React.js", "TypeScript", "Tailwind", "Storybook"],
-//         github: "#",
-//         live: "#",
-//         image: null,
-//     },
-// ];
 
 const CATEGORIES = ["All", "Fullstack", "Backend", "Frontend"];
 
-// ===================== STYLES =====================
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -462,83 +395,83 @@ const styles = `
 `;
 
 function useScrollReveal() {
-    useEffect(() => {
-        const els = document.querySelectorAll(".reveal, .reveal-left");
-        const io = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((e) => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add("visible");
-                        io.unobserve(e.target);
-                    }
-                });
-            },
-            { threshold: 0.15 }
-        );
-        els.forEach((el) => io.observe(el));
-        return () => io.disconnect();
-    }, []);
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal, .reveal-left");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 }
 
 
 function AboutSection() {
-    return (
-        <section id="about">
-            <div className="container">
-                <div className="row align-items-start">
-                    <div className="col-lg-5 mb-5 mb-lg-0">
-                        <span className="section-label reveal">Who I Am</span>
-                        <h2 className="section-title reveal reveal-delay-1">About Me</h2>
-                        <div className="about-divider reveal reveal-delay-2" />
-                        <p className="about-text reveal reveal-delay-3">
-                            I'm <strong>Mahmoud Tamer</strong>, a Fullstack Developer focused on{" "}
-                            <strong>Node.js</strong> and <strong>React.js</strong>. I build
-                            things that live on the internet — clean APIs, scalable backends,
-                            and interfaces people actually enjoy using.
-                            <br /><br />
-                            I care about writing code that's readable, maintainable, and ships
-                            on time. Whether it's designing a database schema or fine-tuning a
-                            UI animation, I stay hands-on across the entire stack.
-                        </p>
-                    </div>
+  return (
+    <section id="about">
+      <div className="container">
+        <div className="row align-items-start">
+          <div className="col-lg-5 mb-5 mb-lg-0">
+            <span className="section-label reveal">Who I Am</span>
+            <h2 className="section-title reveal reveal-delay-1">About Me</h2>
+            <div className="about-divider reveal reveal-delay-2" />
+            <p className="about-text reveal reveal-delay-3">
+              I'm <strong>Mahmoud Tamer</strong>, a Fullstack Developer focused on{" "}
+              <strong>Node.js</strong> and <strong>React.js</strong>. I build
+              things that live on the internet — clean APIs, scalable backends,
+              and interfaces people actually enjoy using.
+              <br /><br />
+              I care about writing code that's readable, maintainable, and ships
+              on time. Whether it's designing a database schema or fine-tuning a
+              UI animation, I stay hands-on across the entire stack.
+            </p>
+          </div>
 
-                    <div className="col-lg-6 offset-lg-1">
-                        <span className="section-label reveal">Tech Stack</span>
-                        <h3 className="reveal reveal-delay-1" style={{
-                            fontFamily: "'DM Sans', sans-serif",
-                            fontSize: "1rem",
-                            fontWeight: 400,
-                            color: "var(--gray)",
-                            marginBottom: 0,
-                        }}>
-                            Tools & technologies I work with daily
-                        </h3>
-                        <div className="skills-grid">
-                            {skills.map((s, i) => (
-                                <span
-                                    key={s.name}
-                                    className={`skill-badge reveal reveal-delay-${Math.min((i % 4) + 1, 4)}`}
-                                >
-                                    <span className="skill-dot" style={{ background: s.color }} />
-                                    {s.name}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+          <div className="col-lg-6 offset-lg-1">
+            <span className="section-label reveal">Tech Stack</span>
+            <h3 className="reveal reveal-delay-1" style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "1rem",
+              fontWeight: 400,
+              color: "var(--gray)",
+              marginBottom: 0,
+            }}>
+              Tools & technologies I work with daily
+            </h3>
+            <div className="skills-grid">
+              {skills.map((s, i) => (
+                <span
+                  key={s.name}
+                  className={`skill-badge reveal reveal-delay-${Math.min((i % 4) + 1, 4)}`}
+                >
+                  <span className="skill-dot" style={{ background: s.color }} />
+                  {s.name}
+                </span>
+              ))}
             </div>
-        </section>
-    );
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 
 export default function AboutProjects() {
-    useScrollReveal();
-    return (
-        <>
-            <style>{styles}</style>
-            <AboutSection />
-            <ListProjects />
-        </>
-    );
+  useScrollReveal();
+  return (
+    <>
+      <style>{styles}</style>
+      <AboutSection />
+      <ListProjects />
+    </>
+  );
 }
