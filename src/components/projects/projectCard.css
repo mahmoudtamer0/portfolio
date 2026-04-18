@@ -1,0 +1,253 @@
+/* Project card */
+.project-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-wrap {
+    position: relative;
+    height: 180px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: rgba(245, 197, 24, 0.15);
+    letter-spacing: -2px;
+    user-select: none;
+}
+
+.card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .card-img-wrap img {
+    transform: scale(1.05);
+}
+
+.card-category-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--yellow);
+    color: var(--dark);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 50px;
+}
+
+.card-body-custom {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-title-custom {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.3px;
+}
+
+.card-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.9rem;
+}
+
+.tech-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: #f4f4f6;
+    color: var(--gray);
+    border: 1px solid var(--border);
+}
+
+.card-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.7;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.btn-card {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--dark);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-card:hover {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: #fff;
+}
+
+.btn-card.btn-live {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: var(--dark);
+}
+
+.btn-card.btn-live:hover {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: var(--yellow);
+}
+
+.btn-card.btn-disabled {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.cards-grid .col {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.cards-grid .col.hide {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+
+    #about::before,
+    #projects::before {
+        display: none;
+    }
+
+    .about-text {
+        font-size: 0.95rem;
+    }
+}
+
+
+.card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    height: 220px;
+}
+
+.card-media {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card-img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.card-video {
+    opacity: 0;
+    transform: scale(1.05);
+}
+
+.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hide {
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+.hover-hint {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    z-index: 10;
+    pointer-events: none;
+    transition: all 0.25s ease;
+}
+
+.show-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hide-hint {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

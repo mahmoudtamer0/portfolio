@@ -1,0 +1,85 @@
+footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(255, 255, 255, .06);
+    padding: 1.8rem 0;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.3px;
+}
+
+.footer-brand span {
+    color: var(--yellow);
+}
+
+.footer-copy {
+    font-size: .78rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, .3);
+    text-align: center;
+    margin: 0;
+}
+
+.footer-socials {
+    display: flex;
+    gap: .5rem;
+}
+
+.footer-social-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, .4);
+    text-decoration: none;
+    transition: all .2s;
+}
+
+.footer-social-icon:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+    background: rgba(245, 197, 24, .08);
+}
+
+@media (max-width: 991px) {
+    .contact-blob {
+        width: 100%;
+        height: 42%;
+        clip-path: ellipse(100% 55% at 50% 100%);
+        top: auto;
+        bottom: 0;
+    }
+
+    #contact::before {
+        display: none;
+    }
+
+    .form-card {
+        margin-top: 1.5rem;
+    }
+
+    .footer-inner {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-brand {
+        width: 100%;
+        text-align: center;
+    }
+}

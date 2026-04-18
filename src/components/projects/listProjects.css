@@ -1,0 +1,54 @@
+#projects {
+    padding: 7rem 0 6rem;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+#projects::before {
+    content: 'WORK';
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-family: 'Playfair Display', serif;
+    font-size: 9rem;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.025);
+    letter-spacing: -4px;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.filter-pills {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+.filter-pill {
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.filter-pill:hover {
+    border-color: var(--dark);
+    color: var(--dark);
+}
+
+.filter-pill.active {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: var(--dark);
+    font-weight: 700;
+}
