@@ -45,10 +45,12 @@ export default function ProjectCard({ project }) {
                 if (!videoRef.current) return;
 
                 if (entry.isIntersecting) {
+                    videoRef.current.playbackRate = 3;
                     videoRef.current.play().catch(() => { });
                 } else {
                     videoRef.current.pause();
                     videoRef.current.currentTime = 0;
+                    videoRef.current.playbackRate = 1;
                 }
             },
             { threshold: 0.6 }
