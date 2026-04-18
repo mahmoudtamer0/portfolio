@@ -47,7 +47,7 @@ export default function HeroSection() {
                             {/* Social Icons */}
                             <div className="social-icons fade-up">
                                 <a
-                                    href="https://linkedin.com/in/your-profile"
+                                    href="https://www.linkedin.com/in/mahmoudtamer0/"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="social-icon"
@@ -59,7 +59,7 @@ export default function HeroSection() {
                                 </a>
 
                                 <a
-                                    href="https://wa.me/201000000000"
+                                    href="https://wa.me/201123511914"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="social-icon"
@@ -71,7 +71,7 @@ export default function HeroSection() {
                                 </a>
 
                                 <a
-                                    href="https://github.com/your-username"
+                                    href="https://github.com/mahmoudtamer0"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="social-icon"
@@ -83,7 +83,7 @@ export default function HeroSection() {
                                 </a>
 
                                 <a
-                                    href="mailto:your@email.com"
+                                    href="mailto:mahmoud.tamer.developer@gmail.com"
                                     className="social-icon"
                                     title="Email"
                                 >
