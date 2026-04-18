@@ -20,12 +20,15 @@ export default function ListProjects() {
 
 
                 const data = await res.json();
+                console.log("Fetched projects:", data);
                 if (!res.ok) {
+                    console.log("Fetched projects:", data);
                     throw new Error(data.message || "Failed to fetch projects");
                 }
 
                 setProjects(data);
             } catch (err) {
+                console.log("Fetched projects:", data);
                 setError(err.message);
             } finally {
                 setLoading(false);
