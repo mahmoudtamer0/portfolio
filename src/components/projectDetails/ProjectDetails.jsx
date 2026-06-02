@@ -166,10 +166,17 @@ export default function ProjectDetails({ projectId, onBack }) {
                         <div className="info-card">
                             <div className="info-card-title">Quick Links</div>
                             <div style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
+
                                 {project.liveDemo && (
                                     <a href={project.liveDemo} target="_blank" rel="noreferrer"
                                         className="link-btn link-btn-primary" style={{ justifyContent: "center" }}>
                                         <ExternalIcon /> Open Live Demo
+                                    </a>
+                                )}
+                                {project.dashboard && (
+                                    <a href={project.dashboard} target="_blank" rel="noreferrer"
+                                        className="link-btn link-btn-secondary" style={{ justifyContent: "center" }}>
+                                        <ExternalIcon /> Dashboard
                                     </a>
                                 )}
                                 {project.github && (
@@ -178,6 +185,7 @@ export default function ProjectDetails({ projectId, onBack }) {
                                         <GithubIcon /> Source Code
                                     </a>
                                 )}
+
                             </div>
                         </div>
 

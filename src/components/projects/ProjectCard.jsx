@@ -131,9 +131,25 @@ export default function ProjectCard({ project }) {
                             onClick={(e) => e.stopPropagation()}
                         >
                             Live
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     ) : (
-                        <span className="btn-card btn-disabled">Live</span>
+                        null
+                    )}
+
+                    {project.dashboard ? (
+                        <a
+                            href={project.dashboard}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="btn-card btn-live"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            Dashboard
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    ) : (
+                        null
                     )}
 
                     {project.github && (
