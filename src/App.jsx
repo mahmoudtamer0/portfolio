@@ -19,10 +19,18 @@ function App() {
       localStorage.setItem("vid", id);
     }
 
-    fetch(`${import.meta.env.VITE_API_URL}/visitors/track`, {
+    const params = new URLSearchParams(location.search);
+
+    fetch(`${API_URL}/api/visitors/track`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ visitorId: id }),
+      body: JSON.stringify({
+        visitorId: id,
+        referrer: document.referrer || null,
+        source: params.get("ref"),
+        language: navigator.language,
+        screen: `${screen.width}x${screen.height}`,
+      }),
     }).catch(() => { });
   }, []);
 
