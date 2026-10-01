@@ -11,27 +11,39 @@ import { useEffect } from 'react'
 
 function App() {
   useEffect(() => {
-    if (localStorage.getItem("owner")) return;
+    if (localStorage.getItem("owner") || navigator.webdriver) return;
 
-    let id = localStorage.getItem("vid");
-    if (!id) {
-      id = crypto.randomUUID();
-      localStorage.setItem("vid", id);
-    }
+    const events = ["pointerdown", "scroll", "keydown", "mousemove", "touchstart"];
 
-    const params = new URLSearchParams(location.search);
+    const send = () => {
+      events.forEach((e) => window.removeEventListener(e, send));
 
-    fetch(`${import.meta.env.VITE_API_URL}/visitors/track`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        visitorId: id,
-        referrer: document.referrer || null,
-        source: params.get("ref"),
-        language: navigator.language,
-        screen: `${screen.width}x${screen.height}`,
-      }),
-    }).catch(() => { });
+      let id = localStorage.getItem("vid");
+      if (!id) {
+        id = crypto.randomUUID();
+        localStorage.setItem("vid", id);
+      }
+
+      const params = new URLSearchParams(location.search);
+
+      fetch(`${import.meta.env.VITE_API_URL}/visitors/track`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          visitorId: id,
+          referrer: document.referrer || null,
+          source: params.get("ref"),
+          language: navigator.language,
+          screen: `${screen.width}x${screen.height}`,
+        }),
+      }).catch(() => { });
+    };
+
+    events.forEach((e) =>
+      window.addEventListener(e, send, { once: true, passive: true })
+    );
+
+    return () => events.forEach((e) => window.removeEventListener(e, send));
   }, []);
 
   return (
