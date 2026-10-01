@@ -21,7 +21,7 @@ function App() {
 
     const params = new URLSearchParams(location.search);
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/visitors/track`, {
+    fetch(`${import.meta.env.VITE_API_URL}/visitors/track`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
