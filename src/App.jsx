@@ -7,8 +7,25 @@ import CVBtn from './components/cvBtn/CvBtn'
 import Nav from './components/nav/Nav'
 import ContactSection from './components/contact/Contact'
 import Footer from './components/footer/Footer'
+import { useEffect } from 'react'
 
 function App() {
+  useEffect(() => {
+    if (localStorage.getItem("owner")) return;
+
+    let id = localStorage.getItem("vid");
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem("vid", id);
+    }
+
+    fetch(`${import.meta.env.VITE_API_URL}/visitors/track`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ visitorId: id }),
+    }).catch(() => { });
+  }, []);
+
   return (
     <>
       <CVBtn />
