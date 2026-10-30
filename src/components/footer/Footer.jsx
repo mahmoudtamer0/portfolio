@@ -1,4 +1,5 @@
 import "./footer.css";
+import { track } from "../../utils/track";
 const Icons = {
     linkedin: <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.984V9h3.105v1.561h.045c.432-.82 1.49-1.683 3.067-1.683 3.28 0 3.885 2.16 3.885 4.969v6.605zM5.337 7.433a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm1.553 13.019H3.783V9h3.107v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z" /></svg>,
     email: <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>,
@@ -17,10 +18,10 @@ function Footer() {
                     <div className="footer-brand">Mahmoud<span>.</span></div>
                     <p className="footer-copy">© {year} Mahmoud Tamer — Built with React & ☕</p>
                     <div className="footer-socials">
-                        <a href="https://www.linkedin.com/in/mahmoudtamer0/" target="_blank" rel="noreferrer" className="footer-social-icon" title="LinkedIn">{Icons.linkedin}</a>
-                        <a href="https://github.com/mahmoudtamer0" target="_blank" rel="noreferrer" className="footer-social-icon" title="GitHub">{Icons.github}</a>
-                        <a href="mailto:mahmoud.tamer.developer@gmail.com" className="footer-social-icon" title="Email">{Icons.email}</a>
-                        <a href="https://wa.me/201123511914" target="_blank" rel="noreferrer" className="footer-social-icon" title="WhatsApp">{Icons.whatsapp}</a>
+                        <a onClick={() => track("linkedin_click")} href="https://www.linkedin.com/in/mahmoudtamer0/" target="_blank" rel="noreferrer" className="footer-social-icon" title="LinkedIn">{Icons.linkedin}</a>
+                        <a onClick={() => track("github_click")} href="https://github.com/mahmoudtamer0" target="_blank" rel="noreferrer" className="footer-social-icon" title="GitHub">{Icons.github}</a>
+                        <a onClick={() => track("email_click")} href="mailto:mahmoud.tamer.developer@gmail.com" className="footer-social-icon" title="Email">{Icons.email}</a>
+                        <a onClick={() => track("whatsapp_click")} href="https://wa.me/201123511914" target="_blank" rel="noreferrer" className="footer-social-icon" title="WhatsApp">{Icons.whatsapp}</a>
                     </div>
                 </div>
             </div>

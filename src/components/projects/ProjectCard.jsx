@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./projectCard.css";
 import { useState, useRef, useEffect } from "react";
+import { track } from "../../utils/track";
 
 export default function ProjectCard({ project }) {
     const [hovered, setHovered] = useState(false);
@@ -124,11 +125,15 @@ export default function ProjectCard({ project }) {
                 <div className="card-actions">
                     {project.liveDemo ? (
                         <a
+
                             href={project.liveDemo}
                             target="_blank"
                             rel="noreferrer"
                             className="btn-card btn-live"
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                track("project_click", { project: project.title, link: "live demo" })
+                            }}
                         >
                             Live
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -143,7 +148,10 @@ export default function ProjectCard({ project }) {
                             target="_blank"
                             rel="noreferrer"
                             className="btn-card btn-live"
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                track("project_click", { project: project.title, link: "dashboard" })
+                            }}
                         >
                             Dashboard
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -158,7 +166,10 @@ export default function ProjectCard({ project }) {
                             target="_blank"
                             rel="noreferrer"
                             className="btn-card"
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                track("project_click", { project: project.title, link: "github" });
+                            }}
                         >
                             GitHub
                         </a>

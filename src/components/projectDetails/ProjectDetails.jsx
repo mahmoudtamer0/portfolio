@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "./projectDetails.css";
 import MediaSlider from "./MediaSlider";
 import { useNavigate } from "react-router-dom";
+import { track } from "../../utils/track";
 
 
 const ArrowLeft = () => (
@@ -69,6 +70,10 @@ export default function ProjectDetails({ projectId, onBack }) {
         fetchProject();
     }, [id]);
 
+    useEffect(() => {
+        if (project) track("project_view", { project: project.title });
+    }, [project]);
+
     // ── loading
     if (loading)
         return (
@@ -103,12 +108,12 @@ export default function ProjectDetails({ projectId, onBack }) {
 
                         <div className="header-links">
                             {project.liveDemo && (
-                                <a href={project.liveDemo} target="_blank" rel="noreferrer" className="link-btn link-btn-primary">
+                                <a onClick={() => track("project_click", { project: project.title, link: "live demo" })} href={project.liveDemo} target="_blank" rel="noreferrer" className="link-btn link-btn-primary">
                                     <ExternalIcon /> Live Demo
                                 </a>
                             )}
                             {project.github && (
-                                <a href={project.github} target="_blank" rel="noreferrer" className="link-btn link-btn-secondary">
+                                <a onClick={() => track("project_click", { project: project.title, link: "github" })} href={project.github} target="_blank" rel="noreferrer" className="link-btn link-btn-secondary">
                                     <GithubIcon /> View on GitHub
                                 </a>
                             )}
@@ -168,19 +173,19 @@ export default function ProjectDetails({ projectId, onBack }) {
                             <div style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
 
                                 {project.liveDemo && (
-                                    <a href={project.liveDemo} target="_blank" rel="noreferrer"
+                                    <a onClick={() => track("project_click", { project: project.title, link: "live demo" })} href={project.liveDemo} target="_blank" rel="noreferrer"
                                         className="link-btn link-btn-primary" style={{ justifyContent: "center" }}>
                                         <ExternalIcon /> Open Live Demo
                                     </a>
                                 )}
                                 {project.dashboard && (
-                                    <a href={project.dashboard} target="_blank" rel="noreferrer"
+                                    <a onClick={() => track("project_click", { project: project.title, link: "dashboard" })} href={project.dashboard} target="_blank" rel="noreferrer"
                                         className="link-btn link-btn-secondary" style={{ justifyContent: "center" }}>
                                         <ExternalIcon /> Dashboard
                                     </a>
                                 )}
                                 {project.github && (
-                                    <a href={project.github} target="_blank" rel="noreferrer"
+                                    <a onClick={() => track("project_click", { project: project.title, link: "github" })} href={project.github} target="_blank" rel="noreferrer"
                                         className="link-btn link-btn-secondary" style={{ justifyContent: "center" }}>
                                         <GithubIcon /> Source Code
                                     </a>
